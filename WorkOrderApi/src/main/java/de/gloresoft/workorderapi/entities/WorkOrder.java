@@ -16,6 +16,18 @@ public class WorkOrder {
     private LocalDate dateTo;
     private Integer workingDays;
 
+    public WorkOrder() {
+    }
+    public WorkOrder(Long id, String employeeName, String projectNumber, String emailId, LocalDate dateFrom, LocalDate dateTo, Integer workingDays) {
+        this.id = id;
+        this.employeeName = employeeName;
+        this.projectNumber = projectNumber;
+        this.emailId = emailId;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.workingDays = workingDays;
+    }
+
     public Long getId() {
         return id;
     }
