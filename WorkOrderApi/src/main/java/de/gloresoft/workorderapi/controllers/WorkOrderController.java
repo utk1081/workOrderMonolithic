@@ -3,6 +3,7 @@ package de.gloresoft.workorderapi.controllers;
 import de.gloresoft.workorderapi.entities.WorkOrder;
 import de.gloresoft.workorderapi.exceptions.ResourceNotFoundException;
 import de.gloresoft.workorderapi.services.WorkOrderService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "${workorders.gui.application.url}")
 public class WorkOrderController {
 
     private final WorkOrderService workOrderService;
@@ -27,7 +29,7 @@ public class WorkOrderController {
 
     @GetMapping("/workOrders/{id}")
     public WorkOrder getWorkOrder(@PathVariable String id) throws NumberFormatException {
-        Long longId;
+        long longId;
         try {
             longId = Long.parseLong(id);
         } catch (NumberFormatException nfe) {
@@ -43,7 +45,7 @@ public class WorkOrderController {
 
     @DeleteMapping("/workOrders/{id}")
     public void deleteWorkOrder(@PathVariable String id) throws ResourceNotFoundException {
-        Long longId;
+        long longId;
         try {
             longId = Long.parseLong(id);
         } catch (NumberFormatException nfe) {
@@ -54,7 +56,7 @@ public class WorkOrderController {
 
     @PutMapping("/workOrders/{id}")
     public void updateWorkOrder(@RequestBody WorkOrder workOrder, @PathVariable String id) throws ResourceNotFoundException {
-        Long longId;
+        long longId;
         try {
             longId = Long.parseLong(id);
         } catch (NumberFormatException nfe) {
