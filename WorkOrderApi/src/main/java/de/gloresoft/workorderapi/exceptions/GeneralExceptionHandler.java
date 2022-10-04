@@ -33,4 +33,11 @@ public class GeneralExceptionHandler {
                 ZonedDateTime.now(ZoneId.of("Z")), ErrorCodes.RESOURCE_ALREADY_EXISTS);
         return new ResponseEntity<>(errorMessageEntity, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(value = {InsufficientBillaleDaysException.class})
+    public ResponseEntity<Object> insufficientBillaleDaysException(ResourceAlreadyExistsException e) {
+        ErrorMessageEntity errorMessageEntity = new ErrorMessageEntity(e.getMessage(), "There are not sifficient billable days available",
+                ZonedDateTime.now(ZoneId.of("Z")), ErrorCodes.INSUFFICIENT_BILLABLE_DAYS);
+        return new ResponseEntity<>(errorMessageEntity, HttpStatus.BAD_REQUEST);
+    }
 }
