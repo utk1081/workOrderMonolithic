@@ -16,6 +16,8 @@ public class WorkOrder {
     private LocalDate dateTo;
     private Integer workingDays;
 
+    private Integer remainingDays;
+
     public WorkOrder() {
     }
     public WorkOrder(Long id, String employeeName, String projectNumber, String emailId, LocalDate dateFrom, LocalDate dateTo, Integer workingDays) {
@@ -26,6 +28,7 @@ public class WorkOrder {
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.workingDays = workingDays;
+        this.remainingDays = workingDays;
     }
 
     public Long getId() {
@@ -84,4 +87,11 @@ public class WorkOrder {
         this.workingDays = workingDays;
     }
 
+    public Integer getRemainingDays() {
+        return remainingDays;
+    }
+
+    public void setRemainingDays(Integer remainingDays) {
+        this.remainingDays = remainingDays;
+    }
 }
