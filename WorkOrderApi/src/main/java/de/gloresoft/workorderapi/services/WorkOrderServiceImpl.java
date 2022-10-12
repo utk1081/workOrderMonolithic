@@ -52,6 +52,13 @@ public class WorkOrderServiceImpl implements WorkOrderService {
 
     @Override
     public void updateWorkOrder(WorkOrder workOrder, Long id) {
+
+        if(!this.workOrderRepository.existsById(id)) {
+            throw new ResourceNotFoundException("This id:"+id+" does not exist.");
+        }
+        workOrder.setId(id);
+        this.workOrderRepository.save(workOrder);
+        /*
     	// step 1 fetch all record against an email id
     	List<WorkOrder> listOfWorkOrder=(List<WorkOrder>) this.findByEmailId(workOrder.getEmailId());
     	int billing_remaining_days=workOrder.getWorkingDays().intValue();
@@ -80,6 +87,7 @@ public class WorkOrderServiceImpl implements WorkOrderService {
 		      throw new InsufficientBillaleDaysException("This id:"+workOrder.getId()+" insufficient billable days.");
 
     	}
+    	*/
     
     }
 
