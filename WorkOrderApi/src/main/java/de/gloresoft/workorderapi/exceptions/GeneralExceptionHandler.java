@@ -40,4 +40,11 @@ public class GeneralExceptionHandler {
                 ZonedDateTime.now(ZoneId.of("Z")), ErrorCodes.INSUFFICIENT_BILLABLE_DAYS);
         return new ResponseEntity<>(errorMessageEntity, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(value = {DateNotParsedException.class})
+    public ResponseEntity<Object> handleDateNotParsed(DateNotParsedException e) {
+        ErrorMessageEntity errorMessageEntity = new ErrorMessageEntity(e.getMessage(), "The date of birth is not correct. Correct Format MM-DD-YYYY",
+                ZonedDateTime.now(ZoneId.of("Z")), ErrorCodes.INCORRECT_DATE_FORMAT);
+        return new ResponseEntity<>(errorMessageEntity, HttpStatus.BAD_REQUEST);
+    }
 }
