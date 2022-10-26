@@ -2,16 +2,18 @@ package de.gloresoft.workorderapi.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 public class History {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String user;
+    private String username;
     private String projectNumber;
     private String emailId;
     private LocalDateTime timestamp;
@@ -20,9 +22,9 @@ public class History {
     public History() {
     }
 
-    public History(Long id, String user, String projectNumber, String emailId, LocalDateTime timestamp, String action) {
+    public History(Long id, String username, String projectNumber, String emailId, LocalDateTime timestamp, String action) {
         this.id = id;
-        this.user = user;
+        this.username = username;
         this.projectNumber = projectNumber;
         this.emailId = emailId;
         this.timestamp = timestamp;
@@ -37,12 +39,12 @@ public class History {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserName() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public LocalDateTime getTimestamp() {
@@ -75,5 +77,18 @@ public class History {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        History history = (History) o;
+        return Objects.equals(username, history.username) && Objects.equals(projectNumber, history.projectNumber) && Objects.equals(emailId, history.emailId) && Objects.equals(timestamp, history.timestamp) && Objects.equals(action, history.action);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, projectNumber, emailId, timestamp, action);
     }
 }
