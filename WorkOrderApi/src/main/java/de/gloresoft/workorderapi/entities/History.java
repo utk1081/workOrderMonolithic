@@ -7,16 +7,14 @@ import javax.persistence.Id;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 public class History {
 
-    
-    //@GeneratedValue
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Id
+    @Id
     private Long id;
-    private String user;
+    private String username;
     private String projectNumber;
     private String email_Id;
     private Timestamp timestamp;
@@ -25,9 +23,10 @@ public class History {
     public History() {
     }
 
-    public History(Long id, String user, String projectNumber, String emailId, Timestamp timestamp, String action) {
+
+    public History(Long id, String username, String projectNumber, String emailId, LocalDateTime timestamp, String action) {
         this.id = id;
-        this.user = user;
+        this.username = username;
         this.projectNumber = projectNumber;
         this.email_Id = emailId;
         this.timestamp = timestamp;
@@ -42,12 +41,12 @@ public class History {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserName() {
+        return username;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public Timestamp getTimestamp() {
@@ -80,5 +79,18 @@ public class History {
 
     public void setEmailId(String emailId) {
         this.email_Id = emailId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        History history = (History) o;
+        return Objects.equals(username, history.username) && Objects.equals(projectNumber, history.projectNumber) && Objects.equals(email_Id, history.email_Id) && Objects.equals(timestamp, history.timestamp) && Objects.equals(action, history.action);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, projectNumber, email_Id, timestamp, action);
     }
 }

@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 public class WorkOrder {
@@ -106,4 +107,23 @@ public class WorkOrder {
 		this.billingDays = billingDays;
 	}
     
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WorkOrder workOrder = (WorkOrder) o;
+        return Objects.equals(employeeName, workOrder.employeeName)
+                && Objects.equals(projectNumber, workOrder.projectNumber)
+                && Objects.equals(emailId, workOrder.emailId)
+                && Objects.equals(dateFrom, workOrder.dateFrom)
+                && Objects.equals(dateTo, workOrder.dateTo)
+                && Objects.equals(workingDays, workOrder.workingDays)
+                && Objects.equals(remainingDays, workOrder.remainingDays);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(employeeName, projectNumber, emailId, dateFrom, dateTo, workingDays, remainingDays);
+    }
 }
