@@ -2,11 +2,13 @@ package de.gloresoft.workorderapi.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
 import java.time.LocalDate;
 
 @Entity
 public class WorkOrder {
-
+	
     @Id
     private Long id;
     private String employeeName;
@@ -15,12 +17,14 @@ public class WorkOrder {
     private LocalDate dateFrom;
     private LocalDate dateTo;
     private Integer workingDays;
+    @Transient 
+    private Integer billingDays;
 
     private Integer remainingDays;
 
     public WorkOrder() {
     }
-    public WorkOrder(Long id, String employeeName, String projectNumber, String emailId, LocalDate dateFrom, LocalDate dateTo, Integer workingDays) {
+    public WorkOrder(Long id, String employeeName, String projectNumber, String emailId, LocalDate dateFrom, LocalDate dateTo, Integer workingDays, Integer billingDays) {
         this.id = id;
         this.employeeName = employeeName;
         this.projectNumber = projectNumber;
@@ -29,6 +33,7 @@ public class WorkOrder {
         this.dateTo = dateTo;
         this.workingDays = workingDays;
         this.remainingDays = workingDays;
+        this.billingDays=billingDays;
     }
 
     public Long getId() {
@@ -94,4 +99,11 @@ public class WorkOrder {
     public void setRemainingDays(Integer remainingDays) {
         this.remainingDays = remainingDays;
     }
+	public Integer getBillingDays() {
+		return billingDays;
+	}
+	public void setBillingDays(Integer billingDays) {
+		this.billingDays = billingDays;
+	}
+    
 }

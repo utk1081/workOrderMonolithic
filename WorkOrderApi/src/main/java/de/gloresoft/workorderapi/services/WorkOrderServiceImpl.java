@@ -47,6 +47,8 @@ public class WorkOrderServiceImpl implements WorkOrderService {
         if(this.workOrderRepository.existsById(workOrder.getId())) {
             throw new ResourceAlreadyExistsException("This id:"+workOrder.getId()+" already exists.");
         }
+        workOrder.setDateFrom(null);
+        workOrder.setDateTo(null);
         this.workOrderRepository.save(workOrder);
     }
 

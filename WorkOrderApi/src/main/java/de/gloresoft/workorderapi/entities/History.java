@@ -2,29 +2,34 @@ package de.gloresoft.workorderapi.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Entity
 public class History {
 
-    @Id
-    @GeneratedValue
+    
+    //@GeneratedValue
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
     private Long id;
     private String user;
     private String projectNumber;
-    private String emailId;
-    private LocalDateTime timestamp;
+    private String email_Id;
+    private Timestamp timestamp;
     private String action;
 
     public History() {
     }
 
-    public History(Long id, String user, String projectNumber, String emailId, LocalDateTime timestamp, String action) {
+    public History(Long id, String user, String projectNumber, String emailId, Timestamp timestamp, String action) {
         this.id = id;
         this.user = user;
         this.projectNumber = projectNumber;
-        this.emailId = emailId;
+        this.email_Id = emailId;
         this.timestamp = timestamp;
         this.action = action;
     }
@@ -45,12 +50,12 @@ public class History {
         this.user = user;
     }
 
-    public LocalDateTime getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(Timestamp timestamp2) {
+        this.timestamp = timestamp2;
     }
 
     public String getAction() {
@@ -70,10 +75,10 @@ public class History {
     }
 
     public String getEmailId() {
-        return emailId;
+        return email_Id;
     }
 
     public void setEmailId(String emailId) {
-        this.emailId = emailId;
+        this.email_Id = emailId;
     }
 }

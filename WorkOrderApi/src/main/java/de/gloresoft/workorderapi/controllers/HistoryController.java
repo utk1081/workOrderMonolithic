@@ -2,6 +2,10 @@ package de.gloresoft.workorderapi.controllers;
 
 import de.gloresoft.workorderapi.entities.History;
 import de.gloresoft.workorderapi.services.HistoryService;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +27,10 @@ public class HistoryController {
 
     @GetMapping("/histories")
     public Iterable<History> getAllHistories() {
+    	List<History> list = new ArrayList<>();
+    	list=(List<History>) historyService.findAllHistories();
+    	History h=list.get(0);
+    	System.out.println(h.getTimestamp());
         return historyService.findAllHistories();
     }
 

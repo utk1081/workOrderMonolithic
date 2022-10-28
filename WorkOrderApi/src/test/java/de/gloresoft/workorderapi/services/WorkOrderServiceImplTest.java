@@ -41,7 +41,7 @@ class WorkOrderServiceImplTest {
     @Test
     void findAllOrders() {
         List<WorkOrder> workOrders = new ArrayList<>();
-        workOrders.add(new WorkOrder(1L, "GG", "123", "abc@workmail.com", LocalDate.of(2022, 7, 8), LocalDate.of(2022, 10, 8), 50));
+        workOrders.add(new WorkOrder(1L, "GG", "123", "abc@workmail.com", LocalDate.of(2022, 7, 8), LocalDate.of(2022, 10, 8), 50,0));
         when(workOrderRepository.findAll()).thenReturn(workOrders);
 
         Iterable<WorkOrder> allOrders = workOrderService.findAllOrders();
@@ -50,7 +50,7 @@ class WorkOrderServiceImplTest {
 
     @Test
     void findById() {
-        WorkOrder workOrder = new WorkOrder(1L, "GG", "123", "abc@workmail.com", LocalDate.of(2022, 7, 8), LocalDate.of(2022, 10, 8), 50);
+        WorkOrder workOrder = new WorkOrder(1L, "GG", "123", "abc@workmail.com", LocalDate.of(2022, 7, 8), LocalDate.of(2022, 10, 8), 50,0);
         when(workOrderRepository.findById(1L)).thenReturn(Optional.of(workOrder));
         WorkOrder workOrder1 = workOrderService.findById(1L);
         assertEquals("123", workOrder1.getProjectNumber());
@@ -73,7 +73,7 @@ class WorkOrderServiceImplTest {
 
     @Test
     void addWorkOrder() {
-        WorkOrder workOrder = new WorkOrder(1L, "GG", "123", "abc@workmail.com", LocalDate.of(2022, 7, 8), LocalDate.of(2022, 10, 8), 50);
+        WorkOrder workOrder = new WorkOrder(1L, "GG", "123", "abc@workmail.com", LocalDate.of(2022, 7, 8), LocalDate.of(2022, 10, 8), 50,0);
         when(workOrderRepository.existsById(workOrder.getId())).thenReturn(false);
         when(workOrderRepository.save(any())).thenReturn(new WorkOrder());
         workOrderService.addWorkOrder(workOrder);
@@ -91,7 +91,7 @@ class WorkOrderServiceImplTest {
 
     @Test
     void updateWorkOrder() {
-        WorkOrder workOrder = new WorkOrder(1L, "GG", "123", "abc@workmail.com", LocalDate.of(2022, 7, 8), LocalDate.of(2022, 10, 8), 50);
+        WorkOrder workOrder = new WorkOrder(1L, "GG", "123", "abc@workmail.com", LocalDate.of(2022, 7, 8), LocalDate.of(2022, 10, 8), 50,0);
         when(workOrderRepository.existsById(workOrder.getId())).thenReturn(true);
         when(workOrderRepository.save(any())).thenReturn(new WorkOrder());
         workOrderService.updateWorkOrder(workOrder, 1L);

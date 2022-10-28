@@ -28,9 +28,9 @@ public class HistoryServiceImpl implements HistoryService {
 
     @Override
     public void addHistory(History history) {
-        if(!historyRepository.existsById(history.getId())) {
-            throw new ResourceAlreadyExistsException("This id:" + history.getId() + " already exists");
-        }
+//        if(!historyRepository.existsById((long) history.getId())) {
+//            throw new ResourceAlreadyExistsException("This id:" + history.getId() + " already exists");
+//        }
         historyRepository.save(history);
     }
 
