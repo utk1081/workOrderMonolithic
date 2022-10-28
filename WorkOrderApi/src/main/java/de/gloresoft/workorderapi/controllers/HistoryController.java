@@ -27,10 +27,6 @@ public class HistoryController {
 
     @GetMapping("/histories")
     public Iterable<History> getAllHistories() {
-    	List<History> list = new ArrayList<>();
-    	list=(List<History>) historyService.findAllHistories();
-    	History h=list.get(0);
-    	System.out.println(h.getTimestamp());
         return historyService.findAllHistories();
     }
 

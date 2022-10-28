@@ -24,7 +24,7 @@ public class History {
     }
 
 
-    public History(Long id, String username, String projectNumber, String emailId, LocalDateTime timestamp, String action) {
+    public History(Long id, String username, String projectNumber, String emailId, Timestamp timestamp, String action) {
         this.id = id;
         this.username = username;
         this.projectNumber = projectNumber;

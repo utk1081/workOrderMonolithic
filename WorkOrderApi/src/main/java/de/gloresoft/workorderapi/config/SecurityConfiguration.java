@@ -48,6 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/workOrders/**").permitAll()
+                .antMatchers("/histories/**").permitAll()
                 .antMatchers("/authenticate", "/register").permitAll()
                 // all other requests need to be authenticated
                 .anyRequest().authenticated().and()

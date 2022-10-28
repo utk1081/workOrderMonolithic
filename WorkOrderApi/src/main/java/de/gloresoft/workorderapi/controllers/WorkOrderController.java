@@ -57,7 +57,7 @@ public class WorkOrderController {
         history.setId(0l);
         history.setEmailId(workOrder.getEmailId());
         history.setProjectNumber(workOrder.getProjectNumber());
-        history.setUser(workOrder.getEmployeeName());
+        history.setUserName(workOrder.getEmployeeName());
         long time = System.currentTimeMillis();
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         history.setTimestamp(timestamp);
@@ -91,7 +91,7 @@ public class WorkOrderController {
         history.setId(0l);
         history.setEmailId(workOrder.getEmailId());
         history.setProjectNumber(workOrder.getProjectNumber());
-        history.setUser(workOrder.getEmployeeName());
+        history.setUserName(workOrder.getEmployeeName());
         long time = System.currentTimeMillis();
         java.sql.Timestamp timestamp = new java.sql.Timestamp(time);
         history.setTimestamp(timestamp);
