@@ -12,7 +12,6 @@ CREATE TABLE History (
 )AUTO_INCREMENT = 1;
 
 
-
 CREATE TABLE users (
     id bigint NOT NULL AUTO_INCREMENT, username varchar(50), password varchar(50), date_of_birth date,
     role varchar(20) , 
